@@ -63,13 +63,7 @@
 - **本质上就是将关键的时间间隔信息注入到了序列建模的核心单元（GRU）之中，这样GRU可以给予时间段来重置和更新当前行为状态**
 
 ## 3.2 Directional Multi-Head Attention
-<p style="text-align: center">
-    <img src="../../pics/TiSSA/TiSSA_3.2_注意力结构图.png">
-      <figcaption style="text-align: center">
-        TiSSA_注意力结构图
-      </figcaption>
-    </img>
-  </p>
+![TiSSA_注意力结构图](../../pics/TiSSA/TiSSA_3.2_注意力结构图.png)
 
 - 提出一种token2token的，自注意方式，本质上和NLP transformer 里面的多头自注意力方式很像，但是延续的是以前的写法不是 transformer 的attention机制。
 - 公式对于其中一个head，总共M个head， head_k i,j = W^T * σ(W(1)(xi * W_ck ) + W (2)(xj * W_qk ))
@@ -87,22 +81,10 @@
 - 总之，本质上就是一个多头自注意机制，只是用的自己原创的自注意机制，而不是 transformer。
 
 ## 4 TIME SLICE SELF-ATTENTION APPROACH AND RANKING SYSTEM
-<p style="text-align: center">
-    <img src="../../pics/TiSSA/TiSSA_4_自切片排序框架.png">
-      <figcaption style="text-align: center">
-        TiSSA_自切片排序框架
-      </figcaption>
-    </img>
-  </p>
+![TiSSA_自切片排序框架](../../pics/TiSSA/TiSSA_4_自切片排序框架.png)
 
 ## Feature Engineering
-<p style="text-align: center">
-    <img src="../../pics/TiSSA/TiSSA_4.1_特征工程.png">
-      <figcaption style="text-align: center">
-        TiSSA_特征工程
-      </figcaption>
-    </img>
-  </p>
+![TiSSA_特征工程](../../pics/TiSSA/TiSSA_4.1_特征工程.png)
 
 - 每个用户行为对象（如点击过的商品）使用一个多热向量 来表示。 这个向量包含了该对象的多种特征，如ID类特征（物品ID、店铺ID等）和离散化的统计特征，本质上就是把多个独热向量拼起来
 - 然后对每个特征单独进行线性映射（嵌入），生成一个稠密向量，然后将所有这些特征对应的稠密向量拼接起来，形成最终代表该行为对象的行为嵌入向量。也就是把所有关于这个用户行为对应的item的特征都转化成embedding然后拼接起来变成一个向量
@@ -204,13 +186,7 @@
 - AUC
 
 ## 5.4 Experimental Results on Offline Dataset
-<p style="text-align: center">
-    <img src="../../pics/TiSSA/TiSSA_5.4_实验结果.png">
-      <figcaption style="text-align: center">
-        TiSSA_实验结果
-      </figcaption>
-    </img>
-  </p>
+![TiSSA_实验结果](../../pics/TiSSA/TiSSA_5.4_实验结果.png)
 
 - 没有 Time-GRU 和 没有动态time-slice，影响是最大的
 

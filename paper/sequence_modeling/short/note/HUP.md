@@ -62,24 +62,12 @@
 - Micro-behaviors
   - 可以提供更丰富的信息来指出用户当时的兴趣
   - 文章中考虑的微行为如下
-<p style="text-align: center">
-    <img src="../../pics/HUP/HUP_3.1_用户微行为列表.png">
-      <figcaption style="text-align: center">
-        HUP_用户微行为列表
-      </figcaption>
-    </img>
-  </p>
+![HUP_用户微行为列表](../../pics/HUP/HUP_3.1_用户微行为列表.png)
 
 ### 3.2 Hierarchical User Profiling
 
 ## 4 HUP: A HIERARCHICAL USER PROFILING FRAMEWORK
-<p style="text-align: center">
-    <img src="../../pics/HUP/HUP_4_模型结构.png">
-      <figcaption style="text-align: center">
-        HUP_模型结构
-      </figcaption>
-    </img>
-  </p>
+![HUP_模型结构](../../pics/HUP/HUP_4_模型结构.png)
 
 ### 4.1 The Input and Embedding Layers
 - 输入定义：
@@ -142,13 +130,7 @@
   - 同时每一层并不是同步更新的，这保证了只有用户对应的行为注意力换了才会更新状态学习
 
 ### 4.3 Behavior-LSTM Cell
-<p style="text-align: center">
-    <img src="../../pics/HUP/HUP_4.3_Behavior-LSTM_结构.png">
-      <figcaption style="text-align: center">
-        HUP_Behavior-LSTM_结构
-      </figcaption>
-    </img>
-  </p>
+![HUP_Behavior-LSTM_结构](../../pics/HUP/HUP_4.3_Behavior-LSTM_结构.png)
 
 - 问题：
   - Time-LSTM，可以学习时间间隔导致的兴趣转移。因为Time-LSTM虽然考虑了时间间隔进模型，但忽略了行为类型和停留时间这两个关键信号，导致兴趣追踪不够精准。

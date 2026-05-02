@@ -73,13 +73,7 @@
     - 由于 B 和 L 通常都很大，直接在长序列上运行 TA 会导致无法接受的推理延迟，因此大多数系统被迫将序列截断至 50 以内，造成信息损失
 
 ## 3.3 Locality-Sensitive Hash (LSH) and SimHash
-<p style="text-align: center">
-    <img src="../../../pics/SDIM/SDIM_3.3_LSH例子.png">
-      <figcaption style="text-align: center">
-        SDIM_LSH例子
-      </figcaption>
-    </img>
-  </p>
+![SDIM_LSH例子](../../../pics/SDIM/SDIM_3.3_LSH例子.png)
 
 - 核心思想：
   - LSH是一种在高维空间中高效寻找最近邻的算法，具有局部敏感性：相似的向量有高概率获得相同的哈希签名，而不相似的向量则几乎不会碰撞。用这种碰撞概率来近似 Target Attention 中的 Softmax 分布，从而避免了昂贵的点积运算
@@ -93,13 +87,7 @@
 - **本质上和ETA是一样的思路，只是ETA是碰撞后，提取和target item相似的 top k 行为 item，而这里是增加碰撞次数，直接模拟softmax分布**
 
 ## 4 METHODOLOGY
-<p style="text-align: center">
-    <img src="../../../pics/SDIM/SDIM_4_模型结构.png">
-      <figcaption style="text-align: center">
-        SDIM_模型结构
-      </figcaption>
-    </img>
-  </p>
+![SDIM_模型结构](../../../pics/SDIM/SDIM_4_模型结构.png)
 
 ### 4.1 User Behavior Modeling via Hash-Based Sampling
 
@@ -169,13 +157,7 @@
     - 极速聚合：由于 m（哈希数，约 48）远小于 B（候选物品数，约 1000），且 logd 远小于 d，总计算量大幅下降。
 
 ### 4.4 Deployment of the Whole System
-<p style="text-align: center">
-    <img src="../../../pics/SDIM/SDIM_4.4_在线系统.png">
-      <figcaption style="text-align: center">
-        SDIM_在线系统
-      </figcaption>
-    </img>
-  </p>
+![SDIM_在线系统](../../../pics/SDIM/SDIM_4.4_在线系统.png)
 
 - 双服务器架构：为了解决计算效率问题，系统被拆分为两个独立部分：
   - BSE 服务器（行为序列编码）：专门负责最耗时的行为序列哈希计算。它将用户的历史行为根据哈希签名分配到不同的“桶（Buckets）”中。

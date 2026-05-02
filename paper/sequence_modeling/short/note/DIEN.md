@@ -81,13 +81,7 @@
 - negative log-likelihood function
 
 ## 3.2 DIEM 模型
-<p style="text-align: center">
-    <img src="../../pics/DIEN/DIEN_3.2_模型结构.png">
-      <figcaption style="text-align: center">
-        DIEN_模型结构
-      </figcaption>
-    </img>
-  </p>
+![DIEN_模型结构](../../pics/DIEN/DIEN_3.2_模型结构.png)
 
 - DIEN由几个部分组成：
   - 第一，所有的特征都由embedding层进行转换。
@@ -101,13 +95,7 @@
   - 电子商务系统中的用户行为丰富，即使在很短的如两周这样的时间，其点击这样的历史行为序列也很长。平衡效率和性能。
   - GRU克服了RNN模型的梯度消失问题，并且速度比LSTM快。
 
-<p style="text-align: center">
-    <img src="../../pics/DIEN/DIEN_3.2_GRU公式.png">
-      <figcaption style="text-align: center">
-        DIEN_GRU公式
-      </figcaption>
-    </img>
-  </p>
+![DIEN_GRU公式](../../pics/DIEN/DIEN_3.2_GRU公式.png)
 
 - 公式解读
   - σ是sigmoid激活函数
@@ -132,21 +120,9 @@
     - 还使用从除去 click 以外的 item set 里面取样负实例
     - 本质上就是 N 对 pair 的binary classification
 
-<p style="text-align: center">
-    <img src="../../pics/DIEN/DIEN_3.2_辅助loss公式.png">
-      <figcaption style="text-align: center">
-        DIEN_辅助loss公式
-      </figcaption>
-    </img>
-  </p>
+![DIEN_辅助loss公式](../../pics/DIEN/DIEN_3.2_辅助loss公式.png)
 
-<p style="text-align: center">
-    <img src="../../pics/DIEN/DIEN_3.2_全局loss公式.png">
-      <figcaption style="text-align: center">
-        DIEN_全局loss公式
-      </figcaption>
-    </img>
-  </p>
+![DIEN_全局loss公式](../../pics/DIEN/DIEN_3.2_全局loss公式.png)
 
 - α 是超参数，用来平衡兴趣表达和CTR最终预测
 - 总结：
@@ -171,13 +147,7 @@
   - n_a 是广告嵌入向量的维数
   - 这一层的GRU的输入就是上一层GRU的输出，i_t = h_t，注意这里的 i_t 是上一层的输出并且会被下面attention score更新，具体更新方式见下文详解
 
-<p style="text-align: center">
-    <img src="../../pics/DIEN/DIEN_3.2_兴趣进化层权重公式.png">
-      <figcaption style="text-align: center">
-        DIEN__兴趣进化层权重公式
-      </figcaption>
-    </img>
-  </p>
+![DIEN__兴趣进化层权重公式](../../pics/DIEN/DIEN_3.2_兴趣进化层权重公式.png)
 
 - 如何融合注意力机制中的局部激活能力和GRU的序列学习
   - GRU with attentional input (AIGRU)

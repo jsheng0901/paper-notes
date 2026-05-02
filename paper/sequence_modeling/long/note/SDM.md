@@ -75,13 +75,7 @@
 - 每个输入item，把所有这些ID 做 embedding 然后拼接起来
 - 同样对于用户 也可以用不同的feature 进行拼接
 
-<p style="text-align: center">
-    <img src="../../pics/SDM/SDM_3.2_模型结构.png">
-      <figcaption style="text-align: center">
-        SDM_模型结构
-      </figcaption>
-    </img>
-  </p>
+![SDM_模型结构](../../pics/SDM/SDM_3.2_模型结构.png)
 
 ### 3.4 Recurrent Layer
 - 给定用户 u 的 embedding 短期行为序列

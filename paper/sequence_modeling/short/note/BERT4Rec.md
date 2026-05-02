@@ -51,13 +51,7 @@
 - 并且与 RNN-based 方法相比，self-attention 可以直接并行化
 - 其它的部分本质上就是BERT的结构，没什么改动
 
-<p style="text-align: center">
-    <img src="../pics/BERT4Rec/BERT4Rec_3.2_模型结构.png">
-      <figcaption style="text-align: center">
-        BERT4Rec_模型结构
-      </figcaption>
-    </img>
-  </p>
+![BERT4Rec_模型结构](../pics/BERT4Rec/BERT4Rec_3.2_模型结构.png)
 
 ### 3.3 Transformer Layer
 - Multi-Head Self-Attention：和BERT或者说Transformer一样，没区别

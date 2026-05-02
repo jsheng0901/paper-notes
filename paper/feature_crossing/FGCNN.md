@@ -50,22 +50,10 @@
 
 
 ## 2 FEATURE GENERATION BY CONVOLUTIONAL NEURAL NETWORK MODEL
-<p style="text-align: center">
-    <img src="./pics/FGCNN/FGCNN_2_模型结构.png">
-      <figcaption style="text-align: center">
-        FGCNN_模型结构
-      </figcaption>
-    </img>
-    </p>
+![FGCNN_模型结构](./pics/FGCNN/FGCNN_2_模型结构.png)
 
 ## 2.1 Overview
-<p style="text-align: center">
-    <img src="./pics/FGCNN/FGCNN_2.1_特征生成结构图.png">
-      <figcaption style="text-align: center">
-        FGCNN_特征生成结构图
-      </figcaption>
-    </img>
-    </p>
+![FGCNN_特征生成结构图](./pics/FGCNN/FGCNN_2.1_特征生成结构图.png)
 
 - 特征生成：
   - 特征生成侧重于识别有用的局部模式和全局模式，以生成新的特征作为原始特征的补充。
@@ -85,13 +73,7 @@
   - 其次，虽然 CNN 可以通过减少参数的数量来缓解 MLP 的优化困难，但它只产生 neighbor feature interaction ，可能会失去许多有用的 global feature interaction 。
 - 提出解决方法：
   - CNN 和 MLP 相互补充从而进行特征生成。
-  - <p style="text-align: center">
-      <img src="./pics/FGCNN/FGCNN_2.3_特征生成结构图.png">
-        <figcaption style="text-align: center">
-          FGCNN_特征生成结构图
-        </figcaption>
-        </img>
-        </p>
+  - ![FGCNN_特征生成结构图](./pics/FGCNN/FGCNN_2.3_特征生成结构图.png)
   - CNN 用有限的参数学习有用的 neighbor feature pattern
   - 而重组层（这是一个全连接层）根据 CNN 提供的 neighbor pattern 生成 global feature interaction
   - 这里纵向为不同的 field，横向为不同的 embedding 维度，卷积核为 K × 1，这会在每个 embedding 维度上聚合相连的 K 个 field。
@@ -124,13 +106,7 @@
 采用 IPNN 模型作为深度分类器的网络结构，因为它在模型复杂性和准确性之间有很好的权衡。实际上任何deep网络都可以。
 
 ### 2.4.1 Network Structure
-<p style="text-align: center">
-    <img src="./pics/FGCNN/FGCNN_2.4.1_deep结构图.png">
-      <figcaption style="text-align: center">
-        FGCNN_deep结构图
-      </figcaption>
-    </img>
-    </p>
+![FGCNN_deep结构图](./pics/FGCNN/FGCNN_2.4.1_deep结构图.png)
 
 - IPNN 模型结合了 FM和 MLP 的学习能力。
 - 一个 FM layer，通过内积运算从 embedding 向量中抽取 pairwise 特征交互。这里的embedding是前面的输出，也就是raw embedding + CNN之后的new embedding

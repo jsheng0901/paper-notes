@@ -40,13 +40,7 @@
   - 提出了一个新颖的 MIMN 模型，它改进了原有的 NTM 架构，具有记忆利用正则化memory utilization regularization 和记忆归纳单元 memory induction unit 两种设计，使其更适合用于兴趣的学习。MIMN 很容易用 UIC server 实现，其中 UIC server 增量地更新用户的兴趣representation 。
 
 ## 3 REALTIME CTR PREDICTION SYSTEM
-<p style="text-align: center">
-    <img src="../../pics/MIMN/MIMN_3_RTP_system.png">
-      <figcaption style="text-align: center">
-        RTP系统设计
-      </figcaption>
-    </img>
-  </p>
+![RTP系统设计](../../pics/MIMN/MIMN_3_RTP_system.png)
 
 ### 3.1 Challenges of Serving with Long Sequential User Behavior Data
 - 核心：
@@ -84,13 +78,7 @@
       - 捕捉用户兴趣中更复杂的高阶模式和非线性演化
 
 ### 4.2 Neural Turing Machine
-<p style="text-align: center">
-    <img src="../../pics/MIMN/MIMN_4.2_模型结构.png">
-      <figcaption style="text-align: center">
-        模型结构
-      </figcaption>
-    </img>
-  </p>
+![模型结构](../../pics/MIMN/MIMN_4.2_模型结构.png)
 
 - 标准的 NTM 通过记忆网络从序列数据中捕获并存储信息
 - 在 time step t，记忆（memory ）的参数记作 M_t，M 个 记忆槽 memory slot
@@ -142,13 +130,7 @@
   - **本质上是结合了GRU和记忆槽，同步更新兴趣演化过程并且学习记录在多个记忆槽中**
 
 ### 4.5 Implementation for Online Serving
-<p style="text-align: center">
-    <img src="../../pics/MIMN/MIMN_4.5_线上服务器设计.pngg">
-      <figcaption style="text-align: center">
-        线上服务器设计
-      </figcaption>
-    </img>
-  </p>
+![线上服务器设计](../../pics/MIMN/MIMN_4.5_线上服务器设计.pngg)
 
 - 建议将UIC server 和 MIMN 的 co-design 的解决方案应用于具有以下条件的应用程序：
   - 丰富的用户行为数据

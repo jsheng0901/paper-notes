@@ -45,13 +45,7 @@
   - 最后，提出一种全新的自动的特征crossing的方法，能高效的生成高阶交叉特征
 
 ## 3 系统总结
-<p style="text-align: center">
-    <img src="./pics/AutoCross/AutoCross_3_系统overview.png">
-      <figcaption style="text-align: center">
-        AutoCross系统overview
-      </figcaption>
-    </img>
-  </p>
+![AutoCross系统overview](./pics/AutoCross/AutoCross_3_系统overview.png)
 
 - the general work flow
   - preprocessed
@@ -73,13 +67,7 @@
 ## 4.1 Problem Definition
 
 ## 4.2 Feature Set Generation
-<p style="text-align: center">
-    <img src="./pics/AutoCross/AutoCross_4.2_特征集合生成.png">
-      <figcaption style="text-align: center">
-        AutoCross_特征集合生成
-      </figcaption>
-    </img>
-  </p>
+![AutoCross_特征集合生成](./pics/AutoCross/AutoCross_4.2_特征集合生成.png)
 
 - 每一个节点的子节点就是该节点内所有样本两两交叉，生成一个新的特征。
 - 比如原始特征是ABCD，第二层就是第一层两两交叉，对于第一个节点，就表示在原来特征集合的基础上（ABCD），再加入一个交叉特征AB。以此类推，每一个子节点在上面所有组合好的特征集合里面找一个两两新的交叉特征。
@@ -101,13 +89,7 @@
 - 最终一个loop上面的两步，一起就不让他们走了。
 
 ## 4.4 Preprocessing
-<p style="text-align: center">
-    <img src="./pics/AutoCross/AutoCross_4.4_特征预处理.png">
-      <figcaption style="text-align: center">
-        AutoCross_特征预处理
-      </figcaption>
-    </img>
-  </p>
+![AutoCross_特征预处理](./pics/AutoCross/AutoCross_4.4_特征预处理.png)
 
 - 离散是处理numerical 数据已经被证实是有用的去提高预测能力
 - 离散的方式：等宽度划分 equal-width discretization
@@ -124,13 +106,7 @@
 - maximal feature number: 当特征数据集个数总数达到某个数之后
 
 ## 5 实验
-<p style="text-align: center">
-    <img src="./pics/AutoCross/AutoCross_5_实验最终结果.png">
-      <figcaption style="text-align: center">
-        AutoCross_实验最终结果
-      </figcaption>
-    </img>
-  </p>
+![AutoCross_实验最终结果](./pics/AutoCross/AutoCross_5_实验最终结果.png)
 
 - 更多细节对比参考原始paper section 5
 - 总而言之，AC+LR and AC+W&D 带有AC生成后的特征集合的模型在两种数据集上测试的效果都明显更好，并且对比其它原始的deep模型inference的时间，反而更快。

@@ -23,13 +23,7 @@
   - 受 SENET 在计算机视觉领域的成功启发，论文使用 SENET 机制来动态地学习特征的权重。
 
 ## 3 OUR PROPOSED MODEL
-<p style="text-align: center">
-    <img src="./pics/FiBiNET/FiBiNET_3_模型整体结构.png">
-      <figcaption style="text-align: center">
-        FiBiNET 模型整体结构
-      </figcaption>
-    </img>
-    </p>
+![FiBiNET 模型整体结构](./pics/FiBiNET/FiBiNET_3_模型整体结构.png)
 
 - sparse input layer 和 embedding layer 与 DeepFM 相同，它对输入特征采用稀疏表示并将原始特征嵌入到稠密向量中。
 - SENET layer 可以将 embedding layer 转换为 SENET-Like embedding feature ，这有助于提高特征的 discriminability。
@@ -42,13 +36,7 @@ embedding layer 将 sparse feature 嵌入到一个低维稠密的实值向量中
 
 ## 3.2 SENET Layer
 SENET 机制，让模型更加关注特征的重要性。对于特定的 CTR 预估任务，我们可以通过 SENET 机制动态地增加重要特征的权重、减少不重要特征的权重。
-<p style="text-align: center">
-    <img src="./pics/FiBiNET/FiBiNET_3.2_SENET结构图.png">
-      <figcaption style="text-align: center">
-        FiBiNET_SENET结构图
-      </figcaption>
-    </img>
-    </p>
+![FiBiNET_SENET结构图](./pics/FiBiNET/FiBiNET_3.2_SENET结构图.png)
 
 - squeeze:
   - 计算每个 field embedding 的 summary statistics
@@ -67,13 +55,7 @@ SENET 机制，让模型更加关注特征的重要性。对于特定的 CTR 预
   - 所谓动态，指的是比如对于某个特征，在某个输入组合里可能是没用的，但是换一个输入组合，很可能是重要特征。它重要不重要，不是静态的，而是要根据当前输入，动态变化的。
 
 ## 3.3 Bilinear-Interaction Layer
-<p style="text-align: center">
-    <img src="./pics/FiBiNET/FiBiNET_3.3_双向交叉层.png">
-      <figcaption style="text-align: center">
-        FiBiNET_双向交叉层
-      </figcaption>
-    </img>
-    </p>
+![FiBiNET_双向交叉层](./pics/FiBiNET/FiBiNET_3.3_双向交叉层.png)
 
 - 特征交互的经典方法是内积和 Hadamard 积，但是都过于简单，不能有效地建模稀疏数据集中的特征交互。
 - 新的Interaction layer 提出了三种类型的双线性函数

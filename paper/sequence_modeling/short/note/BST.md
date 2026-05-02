@@ -28,13 +28,7 @@
   - 引入了Transformer，对位置编码做了更改，通过Multi-head Attention的方式更好反映用户的兴趣变化过程。
 
 ## 2 ARCHITECTURE 模型结构
-<p style="text-align: center">
-    <img src="../pics/BST/BST_2_模型结构.png">
-      <figcaption style="text-align: center">
-        BST_模型结构
-      </figcaption>
-    </img>
-  </p>
+![BST_模型结构](../pics/BST/BST_2_模型结构.png)
 
 ## 2.1 Embedding Layer
 - 同WDL模型一样，其它所有feature都embedding后 concatenate 起来

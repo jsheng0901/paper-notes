@@ -47,25 +47,13 @@
 
 ## 3 提出的模型结构
 - GCN and DNN networks: (a) GDCN-S and (b) GDCN-P.
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_3_模型结构.png">
-      <figcaption style="text-align: center">
-        GDCN_模型结构
-      </figcaption>
-    </img>
-    </p>
+![GDCN_模型结构](./pics/GDCN/GDCN_3_模型结构.png)
 
 ## 3.1 Embedding Layer
 不同于其它需要特征维度一致的模型，和DCN-V2一样，可以采用任意维度的特征，最终以向量拼接来表示拼接在一起。
 
 ## 3.2 Gated Cross Network (GCN)
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_3.2_模型特征交叉层.png">
-      <figcaption style="text-align: center">
-        GDCN_模型特征交叉层
-      </figcaption>
-    </img>
-    </p>
+![GDCN_模型特征交叉层](./pics/GDCN/GDCN_3.2_模型特征交叉层.png)
 
 - c_0 为来自embedding layer 的base input，其中包含一阶特征。
 - c_l 是是来自前一个gated cross layer （即，第 l 个gated cross layer ）的输出特征，用作当前第 (l+1) 个gated cross layer 的输入
@@ -104,13 +92,7 @@ DNN 的目标是建模隐式feature interactions，基本上和其它的 Deep&Wi
   - 最后，我们使用上一步中学到的field 维度训练一个新模型。
   - 本质上其实就是对每个embedding table训练完后的特征，进行降维，并选择最佳解释的降维维度。
 
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_4_特征维度对比.png">
-      <figcaption style="text-align: center">
-        GDCN_特征维度对比
-      </figcaption>
-    </img>
-    </p>
+![GDCN_特征维度对比](./pics/GDCN/GDCN_4_特征维度对比.png)
 
 - 当保留95% 比率时，field 维度范围为2 到15。
 - 降低 information ratio  会导致每个field 的维度减少。 
@@ -123,13 +105,7 @@ DNN 的目标是建模隐式feature interactions，基本上和其它的 Deep&Wi
 
 ## 5.1 Experiment Setup
 - Datasets 分析
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_5.1_数据集.png">
-      <figcaption style="text-align: center">
-        GDCN_数据集
-      </figcaption>
-    </img>
-    </p>
+![GDCN_数据集](./pics/GDCN/GDCN_5.1_数据集.png)
 
 - 数据预处理： 
   - 首先，我们将每个数据集随机分成训练集（80%）、验证集（10%）和测试集（10% ）。 
@@ -155,21 +131,9 @@ DNN 的目标是建模隐式feature interactions，基本上和其它的 Deep&Wi
   - 为了确保公平比较，我们在单个GPU（NVIDIA TITAN V）上使用随机种子运行每种方法10次，并报告平均的测试性能。我们执行双尾t-test 来检测我们的方法与最佳baseline 方法之间的统计显着性。
   - 在所有实验中，与最佳baseline 相比的改进具有统计学意义（p<0.01），在Table 3  和Table 4 中用 ★ 表示。
 
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_5.1_实验结果对比1.png">
-      <figcaption style="text-align: center">
-        GDCN_实验结果对比
-      </figcaption>
-    </img>
-    </p>
+![GDCN_实验结果对比](./pics/GDCN/GDCN_5.1_实验结果对比1.png)
 
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_5.1_实验结果对比2.png">
-      <figcaption style="text-align: center">
-        GDCN_实验结果对比
-      </figcaption>
-    </img>
-    </p>
+![GDCN_实验结果对比](./pics/GDCN/GDCN_5.1_实验结果对比2.png)
 
 ## 5.2 整体性能
 注意，以下的所有结果是在没有应用 FDO 的情况下得出的。实验结果放在上图。
@@ -184,21 +148,9 @@ DNN 的目标是建模隐式feature interactions，基本上和其它的 Deep&Wi
 - GDCN-P 的表现优于所有并行式模型和堆叠式模型。与Table 4 中的并行式模型相比，GDCN-P 实现了卓越的性能，超越了所有最佳baseline。
 
 ## 5.3 Deeper 高阶特征交叉
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_5.3_高阶特征交叉效果对比1.png">
-      <figcaption style="text-align: center">
-        GDCN_高阶特征交叉效果对比1
-      </figcaption>
-    </img>
-    </p>
+![GDCN_高阶特征交叉效果对比1](./pics/GDCN/GDCN_5.3_高阶特征交叉效果对比1.png)
 
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_5.3_高阶特征交叉效果对比2.png">
-      <figcaption style="text-align: center">
-        GDCN_高阶特征交叉效果对比2
-      </figcaption>
-    </img>
-    </p>
+![GDCN_高阶特征交叉效果对比2](./pics/GDCN/GDCN_5.3_高阶特征交叉效果对比2.png)
 
 ### 5.3.1 Compare GCN to other models by changing cross depth
 - 随着交叉层的增加，五个被比较的模型的性能得到改善。然而，当cross depth 变得更深（例如，超过2、3  或4 个交叉层）时，它们的性能会显著下降。这些模型可以在功能上捕获更深的高阶显式和隐式的feature interactions ，但高阶的交叉特征也会引入不必要的噪声，这可能会导致过拟合并导致结果下降。在许多SOTA 工作中进行的cross depth 超参数分析中也观察到了这个问题。
@@ -221,26 +173,14 @@ DNN 的目标是建模隐式feature interactions，基本上和其它的 Deep&Wi
 
 ### 5.4.2 Dynamic instance interpretability
 GCN 通过information gate 学到的gate weights 提供动态可解释性，为每个input instance 提供bit-wise 的和field-wise 的解释。从Criteo 数据集中随机选择两个实例来可视化学到的gate weights ，并检查从第一个到第三个gated cross layer 的gate values。
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_5.4.2_动态特征可解释性.png">
-      <figcaption style="text-align: center">
-        GDCN_动态特征可解释性
-      </figcaption>
-    </img>
-    </p>
+![GDCN_动态特征可解释性](./pics/GDCN/GDCN_5.4.2_动态特征可解释性.png)
 
 - Figure 6(a) 展示了bit-wise gate weight vectors ，每层的维度为 ℝ1×(39*16)，显示了每个bit-wise cross 的重要性。使用bit-wise gate vector ，我们通过对每个field 对应的16-bit values 取平均值来导出field-wise gate vectors。
 - Figure 6(b) 显示了field-wise gate weight vectors（ℝ1×39），表示每个specific feature 的重要性。由于gated cross layer 中的gate weights 是使用sigmoid 函数计算的，因此red blocks （大于0.5 ）表示重要特征，而blue blocks （小于0.5 ）表示不重要特征。
 - 通常，低阶特征交叉包含更重要的特征，而高阶特征交叉包含不太重要的特征。在第一层中，许多特征交叉被标识为重要的（红色块），而在第二和第三交叉层中，大多数交叉是中性的（白色块）或不重要的（蓝色块），尤其是在第三层。这符合我们的直觉：随着交叉层的增加，重要的交叉特征的数量显著减少，因此我们设计了information gate 来自适应地选择重要特征。相反，大多数模型在建模高阶交叉时无法选择有用的特征交叉，导致性能下降。
 - 从Figure 6(b) 中，我们可以识别出重要的或不重要的特定特征，例如特征{#20, #23, #28} 很重要，而特征{#6, #11, #30} 不重要。我们还可以从input instance 中引用这些specific important features 的名称。一旦我们知道哪些特征有影响，我们就可以解释甚至干预有助于用户点击率的相关特征。
 
-<p style="text-align: center">
-    <img src="./pics/GDCN/GDCN_5.4.2_动态特征可解释性平均结果.png">
-      <figcaption style="text-align: center">
-        GDCN_动态特征可解释性平均结果
-      </figcaption>
-    </img>
-    </p>
+![GDCN_动态特征可解释性平均结果](./pics/GDCN/GDCN_5.4.2_动态特征可解释性平均结果.png)
 
 - 在Figure 7 中，我们记录并平均了M 个实例的field-level gate vectors ，表明每个field 的平均重要性，特别是在第一层。例如，field {#20, #23, #24} 非常重要，而field {#11, #27, #30}  相对较不重要。此外，Figure 7  从统计角度进一步验证了随着交叉层的增加，重要交叉特征的数量显著减少。
 

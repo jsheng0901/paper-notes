@@ -38,13 +38,7 @@
 - **本质上是判断，用户不是“一个有着复杂变化兴趣的人”，而是“一个同时拥有多个兴趣，且哪个兴趣被激活会随场景变化的人”**
 
 ## 2 THE PROPOSED METHOD
-<p style="text-align: center">
-    <img src="../../../pics/DMIN/DMIN_2_模型结构.png">
-      <figcaption style="text-align: center">
-        DMIN_模型结构
-      </figcaption>
-    </img>
-  </p>
+![DMIN_模型结构](../../../pics/DMIN/DMIN_2_模型结构.png)
 
 ### 2.1 Embedding Layer
 - 特征分组（四大来源）：

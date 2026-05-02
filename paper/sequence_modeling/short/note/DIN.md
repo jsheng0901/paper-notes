@@ -42,13 +42,7 @@
 ## 4 DEEP INTEREST NETWORK
 
 ## 4.1 Feature Representation
-<p style="text-align: center">
-    <img src="../../pics/DIN/DIN_4.1_特征处理.png">
-      <figcaption style="text-align: center">
-        DIN_特征处理
-      </figcaption>
-    </img>
-  </p>
+![DIN_特征处理](../../pics/DIN/DIN_4.1_特征处理.png)
 
 - 离散特征的处理：
   - 在推荐场景下最主要常见的就是用户和商品的ID
@@ -56,13 +50,7 @@
   - 用户点击行为序列内的离散特征做multi-hot编码。
 
 ## 4.2 Base Model(Embedding&MLP)
-<p style="text-align: center">
-    <img src="../../pics/DIN/DIN_4.2_base_model.png">
-      <figcaption style="text-align: center">
-        DIN_base_model
-      </figcaption>
-    </img>
-  </p>
+![DIN_base_model](../../pics/DIN/DIN_4.2_base_model.png)
 
 - Embedding layer
   - one-hot，转化成一个embedding vector
@@ -78,13 +66,7 @@
   - CTR点击率预测就是二分类问题，损失函数选择交叉熵损失函数
 
 ## 4.3 The structure of Deep Interest Network
-<p style="text-align: center">
-    <img src="../../pics/DIN/DIN_4.3_模型结构.png">
-      <figcaption style="text-align: center">
-        DIN_模型结构
-      </figcaption>
-    </img>
-  </p>
+![DIN_模型结构](../../pics/DIN/DIN_4.3_模型结构.png)
 
 - 基准模型里面最大的问题是对用户点击序列的池化操作，这样丢失了很多信息，并且无论对应的是什么广告，都是固定长度的表达vector
 - 如果直接增加user representation vector长度，会造成参数量爆炸和过拟合的风险
@@ -94,13 +76,7 @@
   - 用户行为中的商品乘以权重再进行sum pooling。
   - 本质上还是pooling，但是是带有权重的pooling，这个权重和候选广告相关
 
-<p style="text-align: center">
-    <img src="../../pics/DIN/DIN_4.3_局部激活公式.png">
-      <figcaption style="text-align: center">
-        DIN_局部激活公式
-      </figcaption>
-    </img>
-  </p>
+![DIN_局部激活公式](../../pics/DIN/DIN_4.3_局部激活公式.png)
 
 - e_1, e_2, ... e_h 是用户U的历史行为Embedding向量列表。 
 - v_a 是候选广告A的Embedding向量。 
@@ -138,13 +114,7 @@
   - 采用小批量内的样本均值和方差完成自适应过程，达到一个平滑处理越阶点。
 
 ## 6 EXPERIMENTS
-<p style="text-align: center">
-    <img src="../../pics/DIN/DIN_6_AUC_公式.png">
-      <figcaption style="text-align: center">
-        DIN_AUC_公式
-      </figcaption>
-    </img>
-  </p>
+![DIN_AUC_公式](../../pics/DIN/DIN_6_AUC_公式.png)
 
 - 模型的评判指标主要是AUC，但是传统的AUC并没有考虑到每个用户的活跃度不一样，这就导致每个用户对于整体的点击率的贡献不一样。
 - 采用先计算验证集中每个用户的AUC，然后带上展现的权重求和得到最终的AUC。从而调整后的AUC能更好的表现出模型在活跃用户上的正负样本的区分能力。

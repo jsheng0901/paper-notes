@@ -42,24 +42,12 @@
   - 在三大真实电商数据集上验证了该框架的有效性，并证明其具备低成本部署到工业生产线的可行
 - **本质上是SIM（hard）的扩展，在 SIM(hard) 中，我们使用 category of target item  作为 query 从而执行检索。而在 UBR4CTR 中，我们根据不同的 input 来自动选择合适的 query 来执行检索**
 
-<p style="text-align: center">
-    <img src="../../../pics/UBR4CTR/UBR4CTR_1_系统设计.png">
-      <figcaption style="text-align: center">
-        UBR4CTR_系统设计
-      </figcaption>
-    </img>
-  </p>
+![UBR4CTR_系统设计](../../../pics/UBR4CTR/UBR4CTR_1_系统设计.png)
 
 ## 2 PRELIMINARIES
 
 ## 3 METHODOLOGY
-<p style="text-align: center">
-    <img src="../../../pics/UBR4CTR/UBR4CTR_3_模型结构.png">
-      <figcaption style="text-align: center">
-        UBR4CTR_模型结构
-      </figcaption>
-    </img>
-  </p>
+![UBR4CTR_模型结构](../../../pics/UBR4CTR/UBR4CTR_3_模型结构.png)
 
 ### 3.1 Overall Framework
 - 用户行为检索模块 (User Behavior Retrieval Module)：
@@ -85,13 +73,7 @@
   - 工业级架构：通过引入搜索引擎和倒排索引的设计，使得从全量历史中实时检索成为可能，解决了传统方法只能使用固定短序列的根本局限。
 
 ### 3.2 User Behavior Retrieval Module
-<p style="text-align: center">
-    <img src="../../../pics/UBR4CTR/UBR4CTR_3.2_特征选择.png">
-      <figcaption style="text-align: center">
-        UBR4CTR_特征选择
-      </figcaption>
-    </img>
-  </p>
+![UBR4CTR_特征选择](../../../pics/UBR4CTR/UBR4CTR_3.2_特征选择.png)
 
 #### 3.2.1 Feature Selection Model
 - 目标：
@@ -135,13 +117,7 @@
   - **本质上，计算排序，按照特征的发生的稀有度和发生的频次来排序过去的行为，本质上也是一种hard attention的思路，只是多种特征的hard attention的融合**
 
 ### 3.3 Prediction Module
-<p style="text-align: center">
-    <img src="../../../pics/UBR4CTR/UBR4CTR_3.3_预测模型.png">
-      <figcaption style="text-align: center">
-        UBR4CTR_预测模型
-      </figcaption>
-    </img>
-  </p>
+![UBR4CTR_预测模型](../../../pics/UBR4CTR/UBR4CTR_3.3_预测模型.png)
 
 - 核心：
   - 检索模块输出的Top-S个用户行为：B^u = {b^u_1, b^u_2, ..., b^u_S}，其中每个行为 b^u_i 包含了行为发生时的用户、商品、上下文信息。

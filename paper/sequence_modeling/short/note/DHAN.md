@@ -42,13 +42,7 @@
 ## 2 DEEP INTEREST WITH HIERARCHICAL ATTENTION NETWORK
 
 ### 2.1 The Structure of DHAN
-<p style="text-align: center">
-    <img src="../../pics/DHAN/DHAN_2.1_模型结构.png">
-      <figcaption style="text-align: center">
-        DHAN_模型结构
-      </figcaption>
-    </img>
-  </p>
+![DHAN_模型结构](../../pics/DHAN/DHAN_2.1_模型结构.png)
 
 - 扩展机制：
   - 作用：用户行为和目标物品扩展为其在多个维度（如类别、品牌等）上的表征。
@@ -65,13 +59,7 @@
   - 本质上就是把用户的兴趣过程划分的更细，同时每个兴趣划分的更深。来逐一学习和候选item的关系。并融合。
 
 ### 2.2 The Structure of Simplified DHAN
-<p style="text-align: center">
-    <img src="../../pics/DHAN/DHAN_2.2_简化的DHAN结构.png">
-      <figcaption style="text-align: center">
-        DHAN_简化的DHAN结构
-      </figcaption>
-    </img>
-  </p>
+![DHAN_简化的DHAN结构](../../pics/DHAN/DHAN_2.2_简化的DHAN结构.png)
 
 - 简化版本的DHAN，具有 one dimension and two attention levels，也就是一个维度（类别），两层注意力机制。
 - embedding 层 （物品 level的表示）：

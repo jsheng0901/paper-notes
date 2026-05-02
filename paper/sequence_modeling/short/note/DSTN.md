@@ -21,13 +21,7 @@
       - 背后的直觉是：历史点击广告可以反映用户的偏好，历史未点击广告可能一定程度上表明用户的不喜欢。
 
 ## 1 介绍
-<p style="text-align: center">
-    <img src="../../pics/DSTN/DSTN_1_辅助数据类型.png">
-      <figcaption style="text-align: center">
-        DSTN 辅助数据类型
-      </figcaption>
-    </img>
-  </p>
+![DSTN 辅助数据类型](../../pics/DSTN/DSTN_1_辅助数据类型.png)
 
 - 三种类型的辅助数据auxiliary data：
   - 同一个页面上出现的、目标广告上方展示的上下文广告contextual ad
@@ -65,13 +59,7 @@
   - 如何融合所有可用信息。
 
 ## 2.2 Embedding
-<p style="text-align: center">
-    <img src="../../pics/DSTN/DSTN_2.2_embedding处理.png">
-      <figcaption style="text-align: center">
-        DSTN_embedding处理
-      </figcaption>
-    </img>
-  </p>
+![DSTN_embedding处理](../../pics/DSTN/DSTN_2.2_embedding处理.png)
 
 - 一般有三种类型特征并进行不同的处理，如下图所示。
   - cate. 表示 categorical
@@ -98,13 +86,7 @@
     - 因为上下文广告和目标广告都是同一个用户、同一个上下文（如 query ）。
 
 ## 2.3 DSTN - Pooling Model
-<p style="text-align: center">
-    <img src="../../pics/DSTN/DSTN_2.3_模型结构.png">
-      <figcaption style="text-align: center">
-        DSTN_模型结构
-      </figcaption>
-    </img>
-  </p>
+![DSTN_模型结构](../../pics/DSTN/DSTN_2.3_模型结构.png)
 
 - 问题：
   - 不同用户的辅助广告数量 n_c，n_l，n_u可能千差万别，无法放进模型训练
@@ -247,22 +229,10 @@
 
 ## 4.1 Deployment
 详细参考paper
-<p style="text-align: center">
-    <img src="../pics/DSTN/DSTN_4_系统设计.png">
-      <figcaption style="text-align: center">
-        DSTN_系统设计
-      </figcaption>
-    </img>
-  </p>
+![DSTN_系统设计](../pics/DSTN/DSTN_4_系统设计.png)
 
 Ad server requests 过程，重复3，4步骤直到满足条件
-<p style="text-align: center">
-    <img src="../../pics/DSTN/DSTN_4_如何用上下文特征.png">
-      <figcaption style="text-align: center">
-        DSTN_如何用上下文特征
-      </figcaption>
-    </img>
-  </p>
+![DSTN_如何用上下文特征](../../pics/DSTN/DSTN_4_如何用上下文特征.png)
 
 1. 得到所有的候选广告集，并得到对应的特征，此时的上下文广告信息为空。
 2. 计算所有广告的点击概率。

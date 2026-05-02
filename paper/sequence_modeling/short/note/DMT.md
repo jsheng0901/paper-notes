@@ -62,13 +62,7 @@
 - CVR = CTR + CR
 
 ## 4 METHOD
-<p style="text-align: center">
-    <img src="../../pics/DMT/DMT_4_模型结构.png">
-      <figcaption style="text-align: center">
-        DMT_模型结构
-      </figcaption>
-    </img>
-  </p>
+![DMT_模型结构](../../pics/DMT/DMT_4_模型结构.png)
 
 ### 4.1 Input and Embedding Layers
 

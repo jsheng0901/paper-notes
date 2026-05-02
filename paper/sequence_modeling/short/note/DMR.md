@@ -45,13 +45,7 @@
   - CF 技术（尤其是矩阵分解中的内积运算）在衡量 U2I 关联上非常成熟。DMR 的核心思路是打破匹配（召回）与排序的壁垒，将召回阶段的“相关性度量”能力整合进排序模型中
 
 ## 3 Deep Match to Rank Model
-<p style="text-align: center">
-    <img src="../../../pics/DMR/DMR_3_模型结构图.png">
-      <figcaption style="text-align: center">
-        DMR_模型结构图
-      </figcaption>
-    </img>
-  </p>
+![DMR_模型结构图](../../../pics/DMR/DMR_3_模型结构图.png)
 
 ### 3.1 Feature Representation
 - 四类特征：

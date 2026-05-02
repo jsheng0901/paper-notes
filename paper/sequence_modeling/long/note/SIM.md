@@ -53,13 +53,7 @@
   - 如何不牺牲“目标相关”精准度的情况下同时实现对超长行为序列的高效建模：**提出先基于目标进行快速搜索，再对精简后的序列进行精准建模**
 
 ## 3 SEARCH-BASED INTEREST MODEL
-<p style="text-align: center">
-    <img src="../../../pics/SIM/SIM_3_模型结构.png">
-      <figcaption style="text-align: center">
-        SIM_模型结构
-      </figcaption>
-    </img>
-  </p>
+![SIM_模型结构](../../../pics/SIM/SIM_3_模型结构.png)
 
 ### 3.1 Overall Workflow
 - 第一阶段：通用搜索单元 (GSU):
@@ -135,13 +129,7 @@
   - **本质上，辅助任务，强制 GSU 部分学到的 embedding 是任务相关的，和DMR思路很像，要求模型的子结构也能够捕获到 CTR 相关的信息，约束了模型的解空间**
 
 ## 4 IMPLEMENTATION FOR ONLINE SERVING
-<p style="text-align: center">
-    <img src="../../../pics/SIM/SIM_4_系统设计.png">
-      <figcaption style="text-align: center">
-        SIM_系统设计
-      </figcaption>
-    </img>
-  </p>
+![SIM_系统设计](../../../pics/SIM/SIM_4_系统设计.png)
 
 ### 4.1 Challenges of Online Serving with Lifelong User Behavior Data
 - serving latency 应该小于 30 毫秒

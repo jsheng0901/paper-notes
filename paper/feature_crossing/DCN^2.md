@@ -38,13 +38,7 @@
   - 参数化 hash space to mitigate collision impact
 
 ## 3 DCN^2 模型架构
-<p style="text-align: center">
-    <img src="./pics/DCN^2/DCN^2_3_模型结构.png">
-      <figcaption style="text-align: center">
-        DCN^2_模型结构
-      </figcaption>
-    </img>
-    </p>
+![DCN^2_模型结构](./pics/DCN^2/DCN^2_3_模型结构.png)
 
 ## 3.1.Collision-weighted lookups
 引入碰撞权重感知碰撞，碰撞权重间接反映碰撞的影响：预测误差驱动：当多个特征值映射到同一桶（碰撞），该桶的嵌入向量需要同时表示多个特征的语义，可能导致预测误差增大（因为单一嵌入无法充分区分不同特征）。在训练过程中，梯度下降会调整该桶的碰撞权重（通常下调），以减少其对预测的过度影响。
@@ -68,13 +62,7 @@
 - 最后把 SimLayer 的输出作为一个额外的 logit，直接与 DCN 部分的输出融合，增强模型的预测能力，弥补 Cross/OnlyDense 层在显式交互上的不足。
 - 这里借鉴了FFM的思路，对于每个embedding都会和其它embedding进行特征交叉点成，然后apply一个W的投影矩阵，作者没有放出来代码，`具体操作后续看看代码`
 - 公式如下：
-  - <p style="text-align: center">
-      <img src="./pics/DCN^2/DCN^2_3.3_simlayer公式.png">
-        <figcaption style="text-align: center">
-          DCN^2_simlayer公式
-        </figcaption>
-        </img>
-        </p>
+  - ![DCN^2_simlayer公式](./pics/DCN^2/DCN^2_3.3_simlayer公式.png)
 
 ## 4.Benchmarks on open data sets
 - preprocess:

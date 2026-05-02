@@ -46,13 +46,7 @@
 - 最小化交叉熵损失
 
 ### 3.2 SimHash
-<p style="text-align: center">
-    <img src="../../../pics/ETA/ETA_3.2_SimHash_图解.png">
-      <figcaption style="text-align: center">
-        ETA_SimHash_图解
-      </figcaption>
-    </img>
-  </p>
+![ETA_SimHash_图解](../../../pics/ETA/ETA_3.2_SimHash_图解.png)
 
 - 核心：
   - SimHash是一种局部敏感哈希（LSH） 算法，核心思想是：将高维的嵌入向量映射为一个二进制指纹（binary fingerprint），同时保持向量间的相似性——即相似的输入向量会以高概率生成相似的哈希签名。
@@ -66,13 +60,7 @@
   - **本质上是聚类，相似的聚合更近，快速的聚类，代替向量内积**
 
 ## 4 MODEL
-<p style="text-align: center">
-    <img src="../../../pics/ETA/ETA_4_模型结构.png">
-      <figcaption style="text-align: center">
-        ETA_模型结构
-      </figcaption>
-    </img>
-  </p>
+![ETA_模型结构](../../../pics/ETA/ETA_4_模型结构.png)
 
 ## 4.1 Model Overview
 - 模型输入：

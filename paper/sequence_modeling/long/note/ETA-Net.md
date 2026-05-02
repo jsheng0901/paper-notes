@@ -38,13 +38,7 @@
   - 并验证其有效性
 
 ## 4 METHODOLOGY
-<p style="text-align: center">
-    <img src="../../../pics/ETA-Net/ETA-Net_4_模型结构.png">
-      <figcaption style="text-align: center">
-        ETA-Net 模型结构
-      </figcaption>
-    </img>
-  </p>
+![ETA-Net 模型结构](../../../pics/ETA-Net/ETA-Net_4_模型结构.png)
 
 ### 4.1 Model Overview
 - 同 ETA paper

@@ -79,13 +79,7 @@
 - **问题本质：搜索行为不够用，全量行为噪声多**
 
 ## 4 METHODOLOGY
-<p style="text-align: center">
-    <img src="../../../pics/QIN/QIN_4_模型结构.png">
-      <figcaption style="text-align: center">
-        QIN 模型结构
-      </figcaption>
-    </img>
-  </p>
+![QIN 模型结构](../../../pics/QIN/QIN_4_模型结构.png)
 
 ### 4.1 Relevance Search Unit
 - RSU 采用 级联过滤 的方式，逐步缩小行为范围：

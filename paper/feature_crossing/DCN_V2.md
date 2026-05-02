@@ -49,44 +49,20 @@
 
 ## 3 模型架构
 DCN-M模型同DCN结构一样，从嵌入和堆积层（embedding and stacking layer）开始，接着是Cross Network和深度网络，最后是组合层，它结合了两个网络的输出。对比DCN文章提出了两种组合方式，堆叠（串行）和并行两种，完整的DCN-M模型下图所示。
-<p style="text-align: center">
-    <img src="./pics/DCN_V2/DCN-M_模型结构图.png">
-      <figcaption style="text-align: center">
-        DCN-M_模型结构图
-      </figcaption>
-    </img>
-    </p>
+![DCN-M_模型结构图](./pics/DCN_V2/DCN-M_模型结构图.png)
 
 ## 3.1 Embedding Layer
 - 考虑输入有稀疏和稠密的特征。在大规模的网络推荐系统中，输入大部分是类别特征，如"country=usa"。类别特征通常用one-hot编码，如”[0,1,0]“；然而，这会导致过度的高维特征空间。
 - 为了降低维度，采用embedding process将二值化特征变换为稠密实值向量（通常称为嵌入向量，embedding vectors）。
 - 最后，我们将嵌入（embedding）向量和归一化的稠密特征 x_dense 拼接成一个向量输入到网络中去。对于 multivalent features 先做mean再拼接在一起。输入和拼接方式同DCN。
-    - <p style="text-align: center">
-        <img src="./pics/DCN/DCN_2.1_输入.png">
-          <figcaption style="text-align: center">
-            DCN_输入
-          </figcaption>
-        </img>
-        </p>
+    - ![DCN_输入](./pics/DCN/DCN_2.1_输入.png)
 
 ## 3.2 Cross Network
 DCN-M对比DCN核心区别在于W权重矩阵变成了[d, d]。公式如图。
-<p style="text-align: center">
-    <img src="./pics/DCN_V2/DCN-M_3.2_cross_net_公式.png">
-      <figcaption style="text-align: center">
-        DCN-M_cross_net_公式
-      </figcaption>
-    </img>
-    </p>
+![DCN-M_cross_net_公式](./pics/DCN_V2/DCN-M_3.2_cross_net_公式.png)
 
 - 其它特点和DCN一样，结构图如下
-<p style="text-align: center">
-    <img src="./pics/DCN_V2/DCN-M_3.2_cross_net_结构图.png">
-      <figcaption style="text-align: center">
-        DCN-M_cross_net_结构图
-      </figcaption>
-    </img>
-    </p>
+![DCN-M_cross_net_结构图](./pics/DCN_V2/DCN-M_3.2_cross_net_结构图.png)
 
 - 从结构图可以看出来，每一层的复杂度之和 w，b 有关系，也就是说整体的cross net复杂度是 (d × d + d) × L_c。d 是 input 维度也就是embedding and stacking之后的维度，L_c是 cross net 的层数。
 - DCN的参数结构在cross net和MLP上面随着层数的增加，差距越来越大，容易导致大部分的参数专注于deep tower，导致cross net的表达能力不住，所以DCN-M把vector改成了matrix。一定层度保证了参数平衡，再通过低秩矩阵降低时间复杂度。
@@ -108,23 +84,11 @@ DCN-M对比DCN核心区别在于W权重矩阵变成了[d, d]。公式如图。
 
 ## 3.5 Cost-Effective Mixture of Low-Rank DCN
 工业界模型往往受计算资源和响应时间限制，需要在保证效果的同时降低计算成本。低秩方法被广泛用于降低计算成本——将一个稠密矩阵近似分解为两个”高瘦“的低秩矩阵。而且，当原矩阵的奇异值差异较大或快速衰减时，**低秩分解**的方法会更加有效。作者发现，DCN-M中学到的参数矩阵是低秩的（所以比较适合做矩阵分解）。
-<p style="text-align: center">
-    <img src="./pics/DCN_V2/DCN-M_3.5_低秩矩阵公式.png">
-      <figcaption style="text-align: center">
-        DCN-M_低秩矩阵公式
-      </figcaption>
-    </img>
-    </p>
+![DCN-M_低秩矩阵公式](./pics/DCN_V2/DCN-M_3.5_低秩矩阵公式.png)
 
 - 以上公式显示，cross net是在子空间中学习特征交叉
   - 子空间的交叉特征建模使得我们可以利用MoE。MoE由两部分组成：experts专家和gating门（一个关于输入x的函数）。我们可以使用多个专家，每个专家学习不同的交叉特征，最后通过gating将各个专家的学习结果整合起来，作为输出。这样就又能进一步增加对交叉特征的建模能力。结构图如下：
-  - <p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN-M_3.5_MoE结构图.png">
-        <figcaption style="text-align: center">
-          DCN-M_MoE结构图
-        </figcaption>
-      </img>
-      </p>
+  - ![DCN-M_MoE结构图](./pics/DCN_V2/DCN-M_3.5_MoE结构图.png)
 - 我们将输入x从维度d映射到r，然后又映射会维度d。[d >> r]。
   - 利用映射空间的低秩性。在映射回原有空间之前，施加了非线性变换来提炼特征。进一步增加模型的表达能力。
 
@@ -152,34 +116,16 @@ DCN-M对比DCN核心区别在于W权重矩阵变成了[d, d]。公式如图。
 - DCN-V2中每个component的角色，在做什么
 
 **Performance with increasing difficulty**：只考虑2阶特征交叉的情况下，作者提出三种特征交叉模型，按照难度由易到难的顺序指定特征交叉的模式构建ground truth。
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_6_特征交叉公式.png">
-        <figcaption style="text-align: center">
-          DCN_特征交叉公式
-        </figcaption>
-      </img>
-      </p>
+![DCN_特征交叉公式](./pics/DCN_V2/DCN_6_特征交叉公式.png)
 
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_6_特征交叉效果对比.png">
-        <figcaption style="text-align: center">
-          DCN_特征交叉效果对比
-        </figcaption>
-      </img>
-      </p>
+![DCN_特征交叉效果对比](./pics/DCN_V2/DCN_6_特征交叉效果对比.png)
 
 从RMSE上来看模型拟合的效果看出：DCN和DCN-V2效果较好。当交叉的模式变得复杂时（f3），所有方法的效果都有所下降，但DCN-V2仍然是很准确的。DNN的效果较差，即使是使用更宽、更深的DNN（DNN-large），效果仍然较差。
 
 **Role of each component**：只有交叉项的时候，随着layer的增加，RMSE的起伏很不稳定，但是加入residual和bias后，随着layer的增加RSME稳定的降低。由此可见，residual 和 bias 负责模型的稳定性，降低了每一层的gap，当一些没必要的交叉层引入的时候，保证了稳定性。
 
 **Performance with increasing layer depth**：1-4阶特征交叉（与实际情况较为接近），当增大层数时，DCN-M能够捕捉数据中更高阶的特征交叉、达到更好的效果。由于DCN-M中的残差项和偏置项，即使模型超过3层（引入了多余的特征交叉），效果也没有变差。
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_6_特征交叉层数增加对比.png">
-        <figcaption style="text-align: center">
-          DCN_特征交叉层数增加对比
-        </figcaption>
-      </img>
-      </p>
+![DCN_特征交叉层数增加对比](./pics/DCN_V2/DCN_6_特征交叉层数增加对比.png)
 
 总结什么情况下显示学习特征交叉模型比ReLU的DNN更有效
 - ReLUs are inefficient in capturing explicit feature crosses (multiplicative relations) even with a deeper and larger network. 
@@ -198,13 +144,7 @@ DCN-M对比DCN核心区别在于W权重矩阵变成了[d, d]。公式如图。
 
 ### 7.1.2 baseline
 我们对比了其它6个特征交叉的SOTA模型
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_7.1.2_模型对比.png">
-        <figcaption style="text-align: center">
-          DCN_模型对比
-        </figcaption>
-      </img>
-      </p>
+![DCN_模型对比](./pics/DCN_V2/DCN_7.1.2_模型对比.png)
 
 ### 7.1.3 Implementation Details
 - Embeddings
@@ -225,13 +165,7 @@ DCN-M对比DCN核心区别在于W权重矩阵变成了[d, d]。公式如图。
 
 ## 7.2 Performance of Feature Interaction Component Alone (RQ2)
 去掉DNN后，baselines中的特征交叉部分表现:
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_7.2_模型对比.png">
-        <figcaption style="text-align: center">
-          DCN_模型对比
-        </figcaption>
-      </img>
-      </p>
+![DCN_模型对比](./pics/DCN_V2/DCN_7.2_模型对比.png)
 
 - 更高阶的模型会比2阶的模型效果更好，说明在Criteo数据集上更高阶的交叉也是有意义的。
 - 在高阶模型中，Cross Network取得了最好的效果，并且slightly better than DNN。
@@ -243,32 +177,14 @@ DCN-M对比DCN核心区别在于W权重矩阵变成了[d, d]。公式如图。
 - 对比DNN，实验显示，在调过参数的DNN之后，比一些更复杂的模型效果还要好一点。我们认为当和DNN联合训练的时候，整体的performance被DNN部分主宰。特别当DNN参数很大的时候。一些简单的特征交叉可能已经被DNN拟合了。
 - 在实践情况下，单一变量很难被学习到，特别是和大量的其它参数一起训练的时候，因此一个不合适的特征可能会导致noise。
 - 大部分模型的运行时间大约是参数量#Params的2倍，但xDeepFM却高出了一个数量级，难以落地。DCN-M效果最好，而且相对来说效率比较高；DCN-Mix进一步降低了计算成本，在准确性和计算成本上实现了更好的权衡。
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_7.3_模型效果对比.png">
-        <figcaption style="text-align: center">
-          DCN_模型效果对比
-        </figcaption>
-      </img>
-      </p>
+![DCN_模型效果对比](./pics/DCN_V2/DCN_7.3_模型效果对比.png)
 
 ## 7.4 Can Cross Layers Replace ReLU layers
 文章进一步对比了DNN和CrossNet的效果。由于实际生产环境中资源有效，往往需要限制模型大小。因此作者限制了模型的内存占用（即参数量）。结果显示，在相同的参数量限制下，CrossNet的效果更好。那是不是说CrossNet就能替代ReLU层？作者表示：还需要更多实验和分析，不过是一个潜在的方向。
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_7.4_模型效果对比.png">
-        <figcaption style="text-align: center">
-          DCN_模型效果对比
-        </figcaption>
-      </img>
-      </p>
+![DCN_模型效果对比](./pics/DCN_V2/DCN_7.4_模型效果对比.png)
 
 ## 7.5 How the Choice of Hyper-parameters Affect DCN-V2 Model Performance (RQ4)
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_7.5_参数效果对比.png">
-        <figcaption style="text-align: center">
-          DCN_参数效果对比
-        </figcaption>
-      </img>
-      </p>
+![DCN_参数效果对比](./pics/DCN_V2/DCN_7.5_参数效果对比.png)
 
 - 网络层数： 
   - 当cross网络层数增加时，效果会稳定提升，说明能够捕捉更有用的交叉。但提升的速度越来越慢，说明高阶特征交叉的作用是低于低阶交叉的。作者也对比了一个相同规模的DNN，层数<=2时DNN效果比cross网络更好，但层数更多时，差距会减小甚至出现反超。
@@ -278,13 +194,7 @@ DCN-M对比DCN核心区别在于W权重矩阵变成了[d, d]。公式如图。
   - 当其他参数设置为最优时，使用更多的专家网络并没有明显地提升，这可能是由于门控机制和优化方法比较朴素。作者认为，如果采用更精细化的门控机制和优化方法，会从MOE结构中取得更大收益。
 
 ## 7.6 Model Understanding (RQ5)
-<p style="text-align: center">
-      <img src="./pics/DCN_V2/DCN_7.6_模型理解能力.png">
-        <figcaption style="text-align: center">
-          DCN_模型理解能力
-        </figcaption>
-      </img>
-      </p>
+![DCN_模型理解能力](./pics/DCN_V2/DCN_7.6_模型理解能力.png)
 
 DCN-M中的权重矩阵 W 能够反映不同交叉特征的重要程度，importance of feature interaction between 𝑖-th and 𝑗-th feature is characterized by the (𝑖, 𝑗)-th block 𝑊𝑖,𝑗。通过heatmap可以看出来，模型能够学到一些强特征，例如gender × userid，movieId × userid。
 

@@ -36,13 +36,7 @@
 ## 3 OUR PROPOSED METHOD
 
 ## 3.2 Overview
-<p style="text-align: center">
-    <img src="./pics/Fi_GNN/Fi_GNN_3.2_模型整体结构.png">
-      <figcaption style="text-align: center">
-        Fi_GNN 模型整体结构
-      </figcaption>
-    </img>
-    </p>
+![Fi_GNN 模型整体结构](./pics/Fi_GNN/Fi_GNN_3.2_模型整体结构.png)
 
 - 输入的 sparse m-field feature vector 首先被映射成稀疏的 one-hot 向量，然后通过 embedding layer 和 multi-head self-attention layer 嵌入到稠密的 field embedding 向量中。
 - field embedding 向量被表示为一个 feature graph ，其中每个节点对应于一个 feature field ，不同的 feature field 可以通过边进行交互。把建模交互的任务可以转换为建模 feature graph 上的节点交互。feature graph 被馈入 Fi-GNN 从而建模节点交互。
@@ -66,13 +60,7 @@
 - 本质上就是 graph-level 分类任务（二分类），也就是每个样本都是一个不同类型的graph，这里的类型就是y_pred里面的是否点击。
 
 ## 3.6 Feature Interaction Graph Neural Network
-<p style="text-align: center">
-    <img src="./pics/Fi_GNN/Fi_GNN_3.6_特征交互结构.png">
-      <figcaption style="text-align: center">
-        Fi_GNN_特征交互结构
-      </figcaption>
-    </img>
-    </p>
+![Fi_GNN_特征交互结构](./pics/Fi_GNN/Fi_GNN_3.6_特征交互结构.png)
 
 - t 表示 interaction step 。由多头自注意力层学到的 feature representation 作为图的初始状态。节点以循环方式进行交互并更新其状态。在每一个 interaction step 中，节点聚合邻居节点的状态信息（经过变换之后），然后根据聚合信息、以及节点历史状态通过 GRU 和残差连接来更新节点状态。
 - State Aggregation：

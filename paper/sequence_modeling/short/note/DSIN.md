@@ -56,13 +56,7 @@
   - 对数似然函数
 
 ### 3.2 Model Overview
-<p style="text-align: center">
-    <img src="../pics/DSIN/DSIN_3.2_模型结构.png">
-      <figcaption style="text-align: center">
-        DSIN_模型结构
-      </figcaption>
-    </img>
-  </p>
+![DSIN_模型结构](../pics/DSIN/DSIN_3.2_模型结构.png)
 
 模型主要可以分为两部分：
 - (1)左侧对user profile和item profile的embedding处理
@@ -95,13 +89,7 @@ Session划分层：
 - 注意不同的session直接share同样的多头注意力参数
 - 这一步等价于DIEN里面用GRU一开始学习行为兴趣之间的关系
 
-<p style="text-align: center">
-    <img src="../pics/DSIN/DSIN_3.2_位置编码图解.png">
-      <figcaption style="text-align: center">
-        DSIN_位置编码图解
-      </figcaption>
-    </img>
-  </p>
+![DSIN_位置编码图解](../pics/DSIN/DSIN_3.2_位置编码图解.png)
 
 会话兴趣交互层 (Session Interest Interacting Layer)：
 - 在提取到各个session的高阶兴趣特征后，继续对兴趣演变过程进行学习

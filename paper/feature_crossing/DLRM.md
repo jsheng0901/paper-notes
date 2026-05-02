@@ -29,13 +29,7 @@
   - 同时利用数据并行性（data parallelism）从全连接层扩展（scale-out）计算。
 
 ## 2 模型架构及设计
-<p style="text-align: center">
-    <img src="./pics/FiBiNET/DLRM_2_模型架构.png">
-      <figcaption style="text-align: center">
-        DLRM 模型架构
-      </figcaption>
-    </img>
-    </p>
+![DLRM 模型架构](./pics/FiBiNET/DLRM_2_模型架构.png)
 
 ## 2.1 Components of DLRM
 通过回顾早期模型，我们可以更容易理解 DLRM 的高级组件

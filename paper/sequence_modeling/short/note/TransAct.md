@@ -72,13 +72,7 @@
 - 在介绍 TrancAct 如何学习用户行为序列特征
 
 ### 3.1 Preliminary: Homefeed Ranking Model
-<p style="text-align: center">
-    <img src="../../pics/TransAct/TransAct_3.1_Pinnability结构.png">
-      <figcaption style="text-align: center">
-        Pinnability 结构
-      </figcaption>
-    </img>
-  </p>
+![Pinnability 结构](../../pics/TransAct/TransAct_3.1_Pinnability结构.png)
 
 - 任务定义与架构：
   - 任务：point-wise 多任务预测，同时预测用户对单个候选物品（Pin）可能采取的多种动作（如点击、转存、隐藏）的概率。每个任务都包含正负样本。
@@ -107,13 +101,7 @@
   - **本质上就是表达了“用户在何时、以何种方式、与何种内容”进行了交互的关键信息。**
 
 ### 3.3 Our Approach: TransAct
-<p style="text-align: center">
-    <img src="../../pics/TransAct/TransAct_3.3_模型结构.png">
-      <figcaption style="text-align: center">
-        TransAct 模型结构
-      </figcaption>
-    </img>
-  </p>
+![TransAct 模型结构](../../pics/TransAct/TransAct_3.3_模型结构.png)
 
 - TransAct 用于提取用户历史行为中的兴趣 pattern，计算用户和候选 item 的相关分数
 
@@ -251,13 +239,7 @@
 - 对每个 head 都会计算，并且对于 positive head 越高越好，negative head （hide）越低越好
 
 #### 4.2.2 Results
-<p style="text-align: center">
-    <img src="../../pics/TransAct/TransAct_4.2_模型结果.png">
-      <figcaption style="text-align: center">
-        TransAct 模型结果
-      </figcaption>
-    </img>
-  </p>
+![TransAct 模型结果](../../pics/TransAct/TransAct_4.2_模型结果.png)
 
 - WDL: averaging pooling on user sequence
 - BST: 两个版本，明显无法分辨 negative action
@@ -266,24 +248,12 @@
 ### 4.3 Ablation Study
 
 #### 4.3.1 Hybrid ranking model
-<p style="text-align: center">
-    <img src="../../pics/TransAct/TransAct_4.3_消融实验结果.png">
-      <figcaption style="text-align: center">
-        模型结构消融实验结果
-      </figcaption>
-    </img>
-  </p>
+![模型结构消融实验结果](../../pics/TransAct/TransAct_4.3_消融实验结果.png)
 
 - 去掉短期 realtime TransAct 影响最大
 
 #### 4.3.2 Base sequence encoder architecture
-<p style="text-align: center">
-    <img src="../../pics/TransAct/TransAct_4.3_序列架构消融实验结果.png">
-      <figcaption style="text-align: center">
-        序列架构消融实验结果
-      </figcaption>
-    </img>
-  </p>
+![序列架构消融实验结果](../../pics/TransAct/TransAct_4.3_序列架构消融实验结果.png)
 
 - 简单的 average pooling 都可以提高效果
 - 复杂的模型 CNN，RNN，LSTM 反而降低了效果
@@ -297,25 +267,13 @@
 - 最终选择 2 layers, 64 FNN hidden dim，latency 几乎没有增加
 
 #### 4.3.5 Transformer output compression
-<p style="text-align: center">
-    <img src="../../pics/TransAct/TransAct_4.3.5_模型输出压缩对比.png">
-      <figcaption style="text-align: center">
-        模型输出压缩对比
-      </figcaption>
-    </img>
-  </p>
+![模型输出压缩对比](../../pics/TransAct/TransAct_4.3.5_模型输出压缩对比.png)
 
 - 压缩 TransAct 的输出维度，保证 DCN V2 的输入大小
 - 前 k 个 全部提取，后面的 max pooling，k = 10。基本上取的是最近的10次行为，也是用户 realtime 的最近的行为
 
 ### 4.4 Online Experiment
-<p style="text-align: center">
-    <img src="../../pics/TransAct/TransAct_4.4_线上实验对比.png">
-      <figcaption style="text-align: center">
-        线上实验对比
-      </figcaption>
-    </img>
-  </p>
+![线上实验对比](../../pics/TransAct/TransAct_4.4_线上实验对比.png)
 
 - 基本在全局用户和Non-core用户中均取得核心指标得收益
 - Non-core用户的定义是在过去的28天中没有pin过任何图片的用户，也就是不活跃用户的推荐效果也很好
@@ -333,13 +291,7 @@
   - 形成一个不断增强的增长飞轮，带来持续提升的用户参与度。
 
 ### 5.2 TransAct in Other Tasks
-<p style="text-align: center">
-    <img src="../../pics/TransAct/TransAct_5.2_在其他任务上面的应用.png">
-      <figcaption style="text-align: center">
-        在其他任务上面的应用
-      </figcaption>
-    </img>
-  </p>
+![在其他任务上面的应用](../../pics/TransAct/TransAct_5.2_在其他任务上面的应用.png)
 
 - 明显 search ranking 上面也有提升
 

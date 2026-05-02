@@ -68,13 +68,7 @@
 ## 3 Methodology
 
 ### 3.1 Preliminary: Ranking Model
-<p style="text-align: center">
-    <img src="../../pics/TransActv2/TransActv2_3_模型结构.png">
-      <figcaption style="text-align: center">
-        TransActv2_模型结构
-      </figcaption>
-    </img>
-  </p>
+![TransActv2_模型结构](../../pics/TransActv2/TransActv2_3_模型结构.png)
 
 - 模型架构
   - point-wise 排序模型
@@ -87,13 +81,7 @@
   - 在基础的多头预测之上，明确提出了引入 “下一个动作预测” 作为辅助任务。让模型学习用户行为的内在序列规律。
 
 ### 3.2 TransAct V2: Transformer for Lifelong User Action Sequence
-<p style="text-align: center">
-    <img src="../../pics/TransActv2/TransActv2_3.2_TransAct结构.png">
-      <figcaption style="text-align: center">
-        TransActv2结构
-      </figcaption>
-    </img>
-  </p>
+![TransActv2结构](../../pics/TransActv2/TransActv2_3.2_TransAct结构.png)
 
 - 长短期融合结构
 - 短期实时序列捕捉短期用户行为，关注其最新的兴趣
@@ -177,13 +165,7 @@
   - CE 是常用的二元分类的 loss
 
 ## 3.4 Serving and Logging System Design
-<p style="text-align: center">
-    <img src="../../pics/TransActv2/TransActv2_3.4_在线系统设计.png">
-      <figcaption style="text-align: center">
-        在线 serving 系统设计
-      </figcaption>
-    </img>
-  </p>
+![在线 serving 系统设计](../../pics/TransActv2/TransActv2_3.4_在线系统设计.png)
 
 - 挑战：
   - 令 L 表示 SLL （长序列）的长度， N 表示每个排序请求的平均项目数，L 的规模这里为 𝒪(10^4)
@@ -250,13 +232,7 @@
   - 结果：
     - 消除了可分页内存到固定内存的复制步骤，并将最终实验设置的推理速度提高了最多35%
 
-<p style="text-align: center">
-    <img src="../../pics/TransActv2/TransActv2_3.4_服务优化.png">
-      <figcaption style="text-align: center">
-        服务优化
-      </figcaption>
-    </img>
-  </p>
+![服务优化](../../pics/TransActv2/TransActv2_3.4_服务优化.png)
 
 ## 4 Experiment
 - 线上和线下实验对比，使用 Pinterest 内部自己的数据
@@ -275,13 +251,7 @@
 - 和 V1 一样，最终的输出 score 是每个 head 的加权平均
 
 #### 4.2.2.Results
-<p style="text-align: center">
-    <img src="../../pics/TransActv2/TransActv2_4.2_模型实验对比.png">
-      <figcaption style="text-align: center">
-        模型实验对比
-      </figcaption>
-    </img>
-  </p>
+![模型实验对比](../../pics/TransActv2/TransActv2_4.2_模型实验对比.png)
 
 - 主要对比 BST 和 TransAct v1，basemodel 可能是 WDL no sequence
 - V2 的效果明显很好，其中基于印象的负采样（NALimp）对这一改进至关重要，模型受益于对用户不感兴趣的更细致的理解，从而更好地校准排序模型
@@ -296,13 +266,7 @@
 - Impression Diversity (higher is better, reflecting broader content exposure)
 
 #### 4.3.2.Online Results
-<p style="text-align: center">
-    <img src="../../pics/TransActv2/TransActv2_4.3_线上实验对比.png">
-      <figcaption style="text-align: center">
-        线上实验对比
-      </figcaption>
-    </img>
-  </p>
+![线上实验对比](../../pics/TransActv2/TransActv2_4.3_线上实验对比.png)
 
 - 加入了曝光的负采样能有效过滤不相关推荐
 - 与 NALimp 集成的TransAct V2实现了最佳整体性能
@@ -312,13 +276,7 @@
 - 测试了不同部分对于serving的优化
 
 #### 4.4.1.Next Action Loss Ablation
-<p style="text-align: center">
-    <img src="../../pics/TransActv2/TransActv2_4.4_负样本采样方式对比.png">
-      <figcaption style="text-align: center">
-        负样本采样方式对比
-      </figcaption>
-    </img>
-  </p>
+![负样本采样方式对比](../../pics/TransActv2/TransActv2_4.4_负样本采样方式对比.png)
 
 - 明显 Impression-based negative sampling 效果最好，因为提供了更强大、更具挑战性的负面样本，从而提高了模型的泛化能力，同时提高了预测负面结果和减少隐藏信息的准确性。
 

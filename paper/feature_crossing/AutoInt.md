@@ -56,13 +56,7 @@
 ## 4 AUTOINT: AUTOMATIC FEATURE INTERACTION LEARNING
 
 ## 4.1 概括
-<p style="text-align: center">
-    <img src="./pics/AutoInt/AutoInt_4.1_模型结构.png">
-      <figcaption style="text-align: center">
-        AutoInt_模型结构
-      </figcaption>
-    </img>
-    </p>
+![AutoInt_模型结构](./pics/AutoInt/AutoInt_4.1_模型结构.png)
 
 - 模型的目标在于将原始高维稀疏特征向量映射到低维空间，同时能够刻画高阶的交叉特征。
 - 首先原始稀疏特征向量经过embedding层转换为低维稠密向量
@@ -70,13 +64,7 @@
 - 最后一层的interacting layer的输出就是一个低维向量，他可以表示前几层学到的高阶特征交叉信息，最后利用这个低维向量来学习CTR分布。
 
 ## 4.2 输入层
-<p style="text-align: center">
-    <img src="./pics/AutoInt/AutoInt_4.2_输入层.png">
-      <figcaption style="text-align: center">
-        AutoInt_输入层
-      </figcaption>
-    </img>
-    </p>
+![AutoInt_输入层](./pics/AutoInt/AutoInt_4.2_输入层.png)
 
 - 如果xi是类别特征的话，就使用one-hot向量进行表示
 - 如果xi是数值类型的话，我们就使用标量进行表示
@@ -133,13 +121,7 @@
 ### 5.1.1 实验数据
 - 数据集：
   四个public real word data，数据statistic如下：
-  <p style="text-align: center">
-      <img src="./pics/AutoInt/AutoInt_5.1.1_数据对比.png">
-        <figcaption style="text-align: center">
-          AutoInt_数据对比
-        </figcaption>
-      </img>
-      </p>
+  ![AutoInt_数据对比](./pics/AutoInt/AutoInt_5.1.1_数据对比.png)
 - 数据处理：
   - 移除不常用的特征值，比如特征值出现的频率低于 10，5，10，并且这一类的特征值统一变成一个特征值 UNKNOWN
   - 数值特征进行log处理
@@ -178,61 +160,31 @@
   - 其它超参数均采用网格搜索
 
 ## 5.2 Quantitative Results (RQ1)
-<p style="text-align: center">
-    <img src="./pics/AutoInt/AutoInt_5.2_实验结果对比.png">
-      <figcaption style="text-align: center">
-        AutoInt_实验结果对比
-      </figcaption>
-    </img>
-    </p>
+![AutoInt_实验结果对比](./pics/AutoInt/AutoInt_5.2_实验结果对比.png)
 
 - 二阶模型全面超越LR
 - DNN的隐式特征交叉学习并不能保证比显式特征交叉学习更强
 - 高价特征交叉明显对模型效果有贡献
 
-<p style="text-align: center">
-    <img src="./pics/AutoInt/AutoInt_5.2_实验性能对比.png">
-      <figcaption style="text-align: center">
-        AutoInt_实验性能对比
-      </figcaption>
-    </img>
-    </p>
+![AutoInt_实验性能对比](./pics/AutoInt/AutoInt_5.2_实验性能对比.png)
 
 - CIN - xDeepFM 时间上最慢
 - AutoInt 一点也不慢
 - 实验对比里面AutoInt采用Deep and Cross 结构，保证了一致性对比
 
-<p style="text-align: center">
-    <img src="./pics/AutoInt/AutoInt_5.2_实验参数对比.png">
-      <figcaption style="text-align: center">
-        AutoInt_实验参数对比
-      </figcaption>
-    </img>
-    </p>
+![AutoInt_实验参数对比](./pics/AutoInt/AutoInt_5.2_实验参数对比.png)
 
 - AutonInt在保证了效果的同时，同时保证了参数个数并不是特别多，可以高效的在线预测
 
 ## 5.3 Analysis (RQ2)
 
 ### 5.3.1 Influence of Residual Structure
-<p style="text-align: center">
-    <img src="./pics/AutoInt/AutoInt_5.3.1_模型残差链接对比.png">
-      <figcaption style="text-align: center">
-        AutoInt_模型残差链接对比
-      </figcaption>
-    </img>
-    </p>
+![AutoInt_模型残差链接对比](./pics/AutoInt/AutoInt_5.3.1_模型残差链接对比.png)
 
 - 所有数据集上有明显显示如果没有残差链接，performance降明显降低
 
 ### 5.3.2 Influence of Network Depths
-<p style="text-align: center">
-    <img src="./pics/AutoInt/AutoInt_5.3.2_模型层数对比.png">
-      <figcaption style="text-align: center">
-        AutoInt_模型层数对比
-      </figcaption>
-    </img>
-    </p>
+![AutoInt_模型层数对比](./pics/AutoInt/AutoInt_5.3.2_模型层数对比.png)
 
 - 从第一层开始，performance 明显上升
 - 到达第三层后，performance 开始趋于稳定
